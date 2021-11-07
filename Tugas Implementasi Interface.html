@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- 
+
+NIM     :   3411191120
+NAMA    :   Silviana Anggraeni
+KELAS   :   DSE-C
+
+-->
+<html lang="en">
+<head>
+    <title>Tugas Implementasi interface</title>
+</head>
+<body>
+    <form name="formTugas" id="tugasku" onsubmit="return Tugas()" method="post">
+        <input type="text" name="username" id="username" placeholder="Username"><br>
+        <input type="password" name="password" id="pass" placeholder="Password"><br>
+        <input type="password" name="repeat" id="repeat" placeholder="Ulangi Password"><br>
+        <input type="text" name="email" id="email" placeholder="Email"><br>
+        <input type="text" name="telp" id="telp" placeholder="Nomor Telpon"><br>
+        <textarea id="alamat" style="width: 167px;" placeholder="Alamat"></textarea><br>
+        <input type="submit" value="Submit" >
+    </form>
+    <script type="text/javascript">
+       
+        function Tugas(){
+        var user = document.formTugas.username.value;
+        var pw = document.formTugas.pass.value;
+        var rpt = document.formTugas.repeat.value;        
+        var Eml = document.formTugas.email.value;
+        var mailformat = /^([A-Za-z][A-Za-z0-9\-\.\_]*)\@([A-Za-z][A-Za-z0-9\-\_]*)(\.[A-Za-z][A-Za-z0-9\-\_]*)+$/;               
+        var tel = document.formTugas.telp.value;
+        var al = document.formTugas.alamat.value;
+
+        if(user == "" || user.length <3 || user.length > 15){
+            alert("Panjang Username 4-15 karakter");
+            return false;
+        }        
+        if(isNaN(telp) && (telp.length < 10 || telp.length > 12)){
+            alert("Telp harus berupa angka 10-12 digit");
+            return false;
+        }
+        if(pw.length > 3 || pw.length > 15 && (pw.match(/[A-Z][0-9][@!#$%^&*]*/g)) ){
+            document.formTugas.repeat.focus();
+            
+        }else{
+            alert("Password harus disertakan Huruf besar, angka dan symbol!");
+        }
+        if(rpt != pw){
+            alert("Password tidak sama !!");
+            return false;
+        }
+        if(Eml.match(mailformat)){
+            document.formTugas.email.focus();            
+        }else{
+            alert("FORMAT EMAIL TIDAK VALID!");
+        }
+        if(al == ""){
+            alert("Alamat tidak boleh kosong !");
+            return false;
+        } 
+        alert("SELAMAT BERGABUNG !");
+        return false;
+     }
+    </script>
+</body>
+</html>
